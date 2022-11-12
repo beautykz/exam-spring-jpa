@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +18,8 @@ public class Company {
     private String title;
     private String contactEmail;
     private String contactPhone;
+
+    private List<Employee> employees;
 
     public void setId(Long id) {
         this.id = id;
@@ -75,6 +78,15 @@ public class Company {
 
     public void setContactPhone(String contactPhone) {
         this.contactPhone = contactPhone;
+    }
+
+    @OneToMany(mappedBy="company")
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

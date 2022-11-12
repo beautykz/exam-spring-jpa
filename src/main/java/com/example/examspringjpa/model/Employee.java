@@ -30,7 +30,7 @@ public class Employee {
     private String lastName;
     private Date created_at;
     private Date updated_at;
-
+    private Company company;
     public Employee() {
     }
 
@@ -88,6 +88,16 @@ public class Employee {
 
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="company_id")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
